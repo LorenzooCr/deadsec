@@ -28,6 +28,15 @@ var selectedItem = null;
 var selectedPrice = null;
 
 function makePayment() {
+
+  var phoneNumber = document.getElementById("phoneNumber").value;
+  var paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+
+  if (!phoneNumber.match(/555-[0-9]{6}/)) {
+    alert("Formato numero di telefono non valido. Assicurati che sia nel formato corretto: 555-123456");
+    return;
+  }
+  
   document.getElementById("paymentMethodContainer").style.display = "none";
   document.querySelector(".validation-code").style.display = "block";
   setTimeout(function () {
