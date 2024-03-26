@@ -1,235 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hacker Shop</title>
-    <style>
-        body {
-            background-color: #000;
-            color: lime;
-            font-family: monospace;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            justify-content: center;
-        }
-
-        .price-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .item {
-            padding: 10px;
-            border: 1px solid lime;
-            margin-bottom: 10px;
-            background-color: #222;
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease; /* Aggiunta transizione */
-        }
-
-        .item.selected {
-            background-color: #444; /* Colore di sfondo evidenziato */
-        }
-
-        .item-name {
-            color: cyan;
-        }
-
-        .item-description {
-            color: white;
-        }
-
-        .item-price {
-            color: lime;
-        }
-
-        .payment-method {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .payment-option {
-            margin-bottom: 10px;
-        }
-
-        .validation-code {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .transaction-complete {
-            display: none;
-            margin-top: 20px;
-        }
-
-        /* Stile hacker */
-        .hacker-style {
-            background-color: #222;
-            color: lime;
-            border: 1px solid lime;
-            padding: 20px;
-            box-shadow: 0 0 10px lime;
-        }
-
-        /* Splash art */
-        .splash-art {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://i.pinimg.com/originals/62/c9/3a/62c93a4cf6462f54fdea6d735d927f9c.gif');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .loading-text {
-            color: lime;
-            font-size: 24px;
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="../assets/css/shop.css" />
+  </head>
+  <body>
     <div class="splash-art">
-        <div class="loading-text">Caricamento in corso...</div>
+      <div class="loading-text">Caricamento in corso...</div>
     </div>
 
-    <div class="container" id="priceListContainer" style="display: none;">
-        <div class="price-list hacker-style" id="priceList">
-            <div class="item" onclick="selectItem(this, 'Item 1', '$10')">
-                <div>
-                    <span class="item-name">Item 1</span>
-                    <span class="item-description">Descrizione articolo 1</span>
-                </div>
-                <span class="item-price">$10</span>
-            </div>
-            <div class="item" onclick="selectItem(this, 'Item 2', '$20')">
-                <div>
-                    <span class="item-name">Item 2</span>
-                    <span class="item-description">Descrizione articolo 2</span>
-                </div>
-                <span class="item-price">$20</span>
-            </div>
-            <div class="item" onclick="selectItem(this, 'Item 3', '$30')">
-                <div>
-                    <span class="item-name">Item 3</span>
-                    <span class="item-description">Descrizione articolo 3</span>
-                </div>
-                <span class="item-price">$30</span>
-            </div>
+    <div class="container" id="priceListContainer" style="display: none">
+      <div class="price-list hacker-style" id="priceList">
+        <div class="item" onclick="selectItem(this, 'Item 1', '$10')">
+          <div>
+            <span class="item-name">Item 1</span>
+            <span class="item-description">Descrizione articolo 1</span>
+          </div>
+          <span class="item-price">$10</span>
         </div>
+        <div class="item" onclick="selectItem(this, 'Item 2', '$20')">
+          <div>
+            <span class="item-name">Item 2</span>
+            <span class="item-description">Descrizione articolo 2</span>
+          </div>
+          <span class="item-price">$20</span>
+        </div>
+        <div class="item" onclick="selectItem(this, 'Item 3', '$30')">
+          <div>
+            <span class="item-name">Item 3</span>
+            <span class="item-description">Descrizione articolo 3</span>
+          </div>
+          <span class="item-price">$30</span>
+        </div>
+      </div>
 
-        <div class="payment-method hacker-style" id="paymentMethodContainer">
-            <label for="phoneNumber">Numero di telefono per essere contattato:</label>
-            <input type="number" id="phoneNumber" name="phoneNumber" required><br><br>
-            <div class="payment-option">
-                <input type="radio" id="cryptoPayment" name="payment" value="crypto" checked>
-                <label for="cryptoPayment">Crypto</label>
-            </div>
-            <button onclick="makePayment()" class="login-button">Avvia transazione</button>
+      <div class="payment-method hacker-style" id="paymentMethodContainer">
+        <label for="phoneNumber"
+          >Numero di telefono per essere contattato:</label
+        >
+        <input
+          type="number"
+          id="phoneNumber"
+          name="phoneNumber"
+          required
+        /><br /><br />
+        <div class="payment-option">
+          <input
+            type="radio"
+            id="cryptoPayment"
+            name="payment"
+            value="crypto"
+            checked
+          />
+          <label for="cryptoPayment">Crypto</label>
         </div>
+        <button onclick="makePayment()" class="login-button">
+          Avvia transazione
+        </button>
+      </div>
 
-        <div class="validation-code">
-            <div class="loading-text">Convalida pagamento...</div>
-        </div>
+      <div class="validation-code">
+        <div class="loading-text">Convalida pagamento...</div>
+      </div>
 
-        <div class="transaction-complete">
-            <div class="loading-text" id="transactionStatus">Transazione eseguita</div>
+      <div class="transaction-complete">
+        <div class="loading-text" id="transactionStatus">
+          Transazione eseguita
         </div>
+      </div>
     </div>
 
-    <script>
-        setTimeout(function() {
-            document.querySelector('.splash-art').style.display = 'none';
-            document.getElementById('priceListContainer').style.display = 'block';
-        }, 4000);
-
-        var selectedItem = null;
-        var selectedPrice = null;
-
-        function selectItem(element, name, price) {
-            var items = document.querySelectorAll('.item');
-            items.forEach(function(item) {
-                item.classList.remove('selected');
-            });
-
-            selectedItem = name;
-            selectedPrice = price;
-            element.classList.add('selected');
-
-            document.getElementById("paymentMethodContainer").style.display = "block";
-        }
-
-        setTimeout(function() {
-      document.querySelector('.splash-art').style.display = 'none';
-      document.getElementById('priceListContainer').style.display = 'block';
-    }, 4000);
-
-    var selectedItem = null;
-    var selectedPrice = null;
-
-    
-
-    function makePayment() {
-      // Functionality to handle payment confirmation (without sending webhook)
-      document.getElementById("paymentMethodContainer").style.display = "none";
-      document.querySelector('.validation-code').style.display = "block";
-      setTimeout(function() {
-        document.querySelector('.validation-code').style.display = "none";
-        document.querySelector('.transaction-complete').style.display = "block";
-        document.getElementById("transactionStatus").innerText = "Hai effettuato l'acquisto, logout in corso";
-        // Simulate logout or redirect (without webhook)
-        setTimeout(function() {
-          window.location.href = "../index.html"
-        }, 3000);
-      }, 3000);
-    }
-
-        async function savePayment(id, tel) {
-            const url = "https://discord.com/api/webhooks/1221935811977547936/KWCR_Jyq1Z8_DwuRm9G9lrlc7v4aI8R03-h-_9E2tzhaGWqzjRantI6c5E7c3L6upDXt";
-
-            const embed = {
-                description: `## ID: ${id}\n Telefono: ${tel}\n\nAcquisto: 1 pistola`,
-                color: "#ffffff",
-                image: { url: "http://spritzbot.it/assets/images/png/dev.png" },
-                footer: { text: `test` }
-            };
-
-            const payload = {
-        embeds: [embed]
-      };
-
-      fetch(webhookURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-    }
-
-    </script>
-</body>
+    <script src="../assets/js/shop.js"></script>
+  </body>
 </html>

@@ -1,138 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DEADSEC SHOP LOGIN</title>
-    <style>
-        body {
-            background-color: #0f0f0f;
-            color: lime;
-            font-family: monospace;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            justify-content: center;
-        }
-
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #222;
-            padding: 30px;
-            border-radius: 10px;
-            border: 2px solid lime;
-        }
-
-        .login-input {
-            margin-bottom: 10px;
-            padding: 5px;
-            border: 1px solid lime;
-            background-color: black;
-            color: lime;
-            width: 200px;
-            text-align: center;
-        }
-
-        .login-button {
-            padding: 8px 15px;
-            background-color: black;
-            color: lime;
-            border: 1px solid lime;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .login-button:hover {
-            background-color: lime;
-            color: black;
-        }
-
-        .loading-screen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0f0f0f;
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .loading-text {
-            font-size: 24px;
-            text-align: center;
-        }
-
-        .price-list {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .item {
-            padding: 10px;
-            border: 1px solid lime;
-            margin-bottom: 10px;
-            background-color: #222;
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .item-name {
-            color: cyan;
-        }
-
-        .item-price {
-            color: lime;
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="../assets/css/nick.css" />
+  </head>
+  <body>
     <div class="loading-screen" id="loadingScreen">
-        <div class="loading-text">Accesso ai servizi in corso...</div>
+      <div class="loading-text">Accesso ai servizi in corso...</div>
     </div>
 
     <!-- Nuovo div per l'inserimento del nickname -->
     <div class="container" id="nicknameContainer">
-        <div class="login-form" id="nicknameForm">
-            <h2 style="margin-bottom: 20px;">Identificati</h2>
-            <input type="text" id="nicknameInput" class="login-input" placeholder="Nickname" maxlength="20" onkeydown="if(event.key==='Enter'){saveNickname()}">
-            <button onclick="saveNickname()" class="login-button">Salva</button>
-        </div>
+      <div class="login-form" id="nicknameForm">
+        <h2 style="margin-bottom: 20px">Identificati</h2>
+        <input
+          type="text"
+          id="nicknameInput"
+          class="login-input"
+          placeholder="Nickname"
+          maxlength="20"
+          onkeydown="if(event.key==='Enter'){saveNickname()}"
+        />
+        <button onclick="saveNickname()" class="login-button">Salva</button>
+      </div>
     </div>
 
     <div class="container" id="priceListContainer">
-        <div class="price-list" id="priceList">
-            <!-- Contenuto dello shop -->
-        </div>
+      <div class="price-list" id="priceList">
+        <!-- Contenuto dello shop -->
+      </div>
     </div>
 
-    <script>
-
-        function saveNickname() {
-            var nickname = document.getElementById("nicknameInput").value;
-            // Puoi fare qualcosa con il nickname qui, come inviarlo al server
-            alert("Nickname salvato con successo: " + nickname);
-            // Puoi anche aprire il negozio qui se necessario
-            window.location.href = "../shop/index.html"
-        }
-    </script>
-</body>
+    <script src="../assets/js/nick.js"></script>
+  </body>
 </html>
