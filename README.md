@@ -36,7 +36,7 @@ We welcome contributions to DeadSec. To contribute, follow these steps:
 5. Submit a pull request
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
 ## Contact
 For questions or feedback, contact me on [![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.spritzbot.it) or via email at lorenzo@spritzbot.it.
